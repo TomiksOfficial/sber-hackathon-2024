@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,8 +6,9 @@ public class Task_2 {
 
     static Scanner sc = new Scanner(System.in);
 
-    static List<Integer> adrH = new ArrayList<>();
-    static List<Integer> adrV = new ArrayList<>();
+    static List<String> addString = new ArrayList<>();
+    static List<Integer> addH = new ArrayList<>();
+    static List<Integer> addV = new ArrayList<>();
     static List<Integer> finalOrder;
 
     static int minDist = Integer.MAX_VALUE;
@@ -19,15 +19,16 @@ public class Task_2 {
         final int N = sc.nextInt();
         final int M = sc.nextInt();
 
-        String firmaStreet = sc.next();
-        Integer firmaHouse = sc.nextInt();
-
-        addAddress(firmaStreet, firmaHouse);
 
         K = sc.nextInt();
 
         List<Boolean> visited = new ArrayList<>(K + 1);
         visited.add(true);
+
+        String firmaStreet = sc.next();
+        Integer firmaHouse = sc.nextInt();
+
+        addAddress(firmaStreet, firmaHouse);
 
         for (int i = 0; i < K; ++i) {
             visited.add(false);
@@ -40,19 +41,16 @@ public class Task_2 {
         findMinDist(0, visited, 0, new ArrayList<>());
 
         for (int i = 0; i < finalOrder.size(); ++i) {
-            System.out.println(finalOrder.get(i));
+            System.out.println(addString.get(finalOrder.get(i)));
         }
 
 //        System.out.println(minDist);
     }
 
-    private static Integer findDist(int first, int second) {
-        return Math.abs(adrH.get(first) - adrH.get(second)) + Math.abs(adrV.get(first) - adrV.get(second));
-    }
-
     private static Integer findMinDist(int cur, List<Boolean> visited, Integer curDist, List<Integer> order) {
+       
         Integer dist = Integer.MAX_VALUE;
-        for (int i = 1; i < adrH.size(); i++) {
+        for (int i = 1; i < addH.size(); i++) {
             if (visited.get(i)) {
                 continue;
             }
@@ -73,16 +71,21 @@ public class Task_2 {
         return dist;
     }
 
+    private static Integer findDist(int first, int second) {
+        return Math.abs(addH.get(first) - addH.get(second)) + Math.abs(addV.get(first) - addV.get(second));
+    }
 
     private static void addAddress(String street, Integer house) {
 
         if (street.charAt(0) == 'H') {
-            adrH.add(Integer.parseInt(street.substring(1)) - 1);
-            adrV.add((house + 1) / 4);
+            addH.add(Integer.parseInt(street.substring(1)) - 1);
+            addV.add((house + 1) / 4);
         } else {
-            adrH.add((house + 1) / 4);
-            adrV.add(Integer.parseInt(street.substring(1)) - 1);
+            addH.add((house + 1) / 4);
+            addV.add(Integer.parseInt(street.substring(1)) - 1);
         }
+
+        addString.add(street + " " + (house));
     }
 
 }

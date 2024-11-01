@@ -6,6 +6,9 @@ public class Task_1 {
 
     static Scanner sc = new Scanner(System.in);
 
+    static String firmaStreet;
+    static Integer firmaHouse;
+
     static public void main(String[] args) {
 
         final int N = sc.nextInt();
@@ -13,15 +16,15 @@ public class Task_1 {
 
         final int K = sc.nextInt();
 
+        firmaStreet = sc.next();
+        firmaHouse = sc.nextInt();
+
         int mileage = getMileage(K);
 
         System.out.println(mileage * 100);
     }
 
     private static int getMileage(int K) {
-
-        String firmaStreet = sc.next();
-        Integer firmaHouse = sc.nextInt();
 
         List<Integer> firmaAdd = convertStringToMatrix(firmaStreet, firmaHouse);
         List<Integer> lastAdd = new ArrayList<>(firmaAdd);
