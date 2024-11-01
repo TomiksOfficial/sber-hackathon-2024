@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Algorithms {
 
-    private List<String> addString;
     private List<Integer> addH;
     private List<Integer> addV;
     private List<Integer> finalOrder;
@@ -22,12 +21,11 @@ public class Algorithms {
 
     @Value("${constants.office.house_number}")
     private Integer firmaHouse;
-    
-    public int getMileage(List<Order> orderList, int K) {
+
+    public Integer getMileage(List<Order> orderList, int K) {
 
         addH = new ArrayList<>();
         addV = new ArrayList<>();
-        addString = new ArrayList<>();
 
         addAddress(firmaStreet, firmaHouse);
 
@@ -52,7 +50,8 @@ public class Algorithms {
 
         addH = new ArrayList<>();
         addV = new ArrayList<>();
-        addString = new ArrayList<>();
+
+        long minPriority = Long.MAX_VALUE;
 
         orderListSize = orderList.size();
 
@@ -67,13 +66,15 @@ public class Algorithms {
             String clientStreet = order.getStreet();
             Integer clientHouse = order.getHouse_number();
             addAddress(clientStreet, clientHouse);
+
+            minPriority = Math.min(minPriority, order.getPriority());
         }
 
         findMinDist(0, visited, 0, new ArrayList<>());
 
         for (long i = 0; i < finalOrder.size(); ++i) {
             Order order = orderList.get(finalOrder.get((int)i));
-            order.setPriority(i + 1);
+            order.setPriority(minPriority + i);
             orderList.set(finalOrder.get((int)i), order);
         }
     }
@@ -118,7 +119,6 @@ public class Algorithms {
             addV.add(Integer.parseInt(street.substring(1)) - 1);
         }
 
-        addString.add(street + " " + (house));
     }
 
 
