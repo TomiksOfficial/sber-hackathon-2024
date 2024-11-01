@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+        "target": "es2020",
+        "module": "esnext",
+        "jsx": "react-jsx",
+        "checkJs": true,
+        "lib": ["esnext", "dom"],
+        "esModuleInterop": true, // force import
+        "moduleResolution": "node",
+
+        "allowSyntheticDefaultImports": true, // force import
+		"types": ["vite/client"]
+    },
+    "include": ["src/**/*", "vite-env.d.ts", "src"]
+}

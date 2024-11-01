@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "socketio.host",
+      "type": "java.lang.String",
+      "description": "SocketIO HOST"
+    },
+    {
+      "name": "socketio.port",
+      "type": "java.lang.String",
+      "description": "SocketIO PORT"
+    },
+    {
+      "name": "constants.max_m",
+      "type": "java.lang.String",
+      "description": "по горизонтали количество кварталов / кол-во перекрёстков + 1"
+    },
+    {
+      "name": "constants.max_n",
+      "type": "java.lang.String",
+      "description": "по вертикали количество кварталов / кол-во перекрёстков + 1"
+    }
+  ]
+}
