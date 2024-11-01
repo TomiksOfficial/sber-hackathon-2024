@@ -1,5 +1,6 @@
 package tomiks.socketiotest.http.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -50,6 +51,11 @@ public class User implements UserDetails {
     )
     private Set<Role> roles;
 
+//    @JoinTable(
+//            name = "customers_orders_connector",
+//            joinColumns = @JoinColumn(name = "customer_id"),
+//            inverseJoinColumns = @JoinColumn(name = "order_id")
+//    )
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
 
@@ -64,6 +70,7 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }

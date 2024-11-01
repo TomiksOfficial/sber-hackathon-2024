@@ -9,14 +9,18 @@ import tomiks.socketiotest.http.config.roles.AdminRole;
 import tomiks.socketiotest.http.config.roles.UserRole;
 import tomiks.socketiotest.http.model.Order;
 import tomiks.socketiotest.http.model.User;
+import tomiks.socketiotest.http.model.order.OrderRequest;
 import tomiks.socketiotest.http.repository.OrderRepository;
+import tomiks.socketiotest.http.repository.UserRepository;
 
 import java.util.List;
 
-@RestController("/orders")
+@RestController
+@RequestMapping("/orders")
 @AllArgsConstructor
 public class OrderController {
 	private final OrderRepository orderRepository;
+	private final UserRepository userRepository;
 
 	@GetMapping("/all_orders")
 	@UserRole
@@ -63,9 +67,13 @@ public class OrderController {
 		User user = SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User ?
 				(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal() : null;
 
-		if (user == null) {
+		if (user == null || order == null) {
 			return ResponseEntity.ok(null);
 		}
+
+//		try {
+//			Order order = new Order(orderRequest.getOrder_name(), orderRequest.getStreet(), orderRequest.getHouse_number(), user);
+//		}
 
 		order.setClient(user);
 
@@ -74,16 +82,24 @@ public class OrderController {
 
 	@PostMapping("/cancel_order")
 	@UserRole
-	public ResponseEntity<Order> cancelOrder(@RequestBody Order order) {
+	public ResponseEntity<?> cancelOrder(@RequestBody OrderRequest orderRequest) {
 		User user = SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User ?
 				(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal() : null;
 
 		if (user == null) {
-			return ResponseEntity.ok(null);
+			return ResponseEntity.ok("user is null");
+		}
+
+//		User usr = userRepository.findById(orderRequest.getUser_id()).orElse(null);
+
+		Order order = orderRepository.findById(orderRequest.order_id).orElse(null);
+
+		if (order == null) {
+			return ResponseEntity.ok("order is null");
 		}
 
 		if (!order.getClient().getId().equals(user.getId())) {
-			return ResponseEntity.ok(null);
+			return ResponseEntity.ok("clients not equals");
 		}
 
 		order.setCanceled(true);

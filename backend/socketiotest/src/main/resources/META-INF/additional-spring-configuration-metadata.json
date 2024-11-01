@@ -19,6 +19,16 @@
       "name": "constants.max_n",
       "type": "java.lang.String",
       "description": "по вертикали количество кварталов / кол-во перекрёстков + 1"
+    },
+    {
+      "name": "constants.office.street",
+      "type": "java.lang.String",
+      "description": "Description for constants.office.street."
+    },
+    {
+      "name": "constants.office.house_number",
+      "type": "java.lang.String",
+      "description": "Description for constants.office.house_number."
     }
   ]
 }
