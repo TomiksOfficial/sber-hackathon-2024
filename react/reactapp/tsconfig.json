@@ -16,7 +16,7 @@
 	  "noEmit": true,
 	  "jsx": "react-jsx",
 	  "types": ["vite/client"],
-	  "checkJs": true
+	//   "checkJs": true
 	},
 	"include": ["src", "vite-env.d.ts"]
   }

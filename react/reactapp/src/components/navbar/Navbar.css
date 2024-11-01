@@ -1,0 +1,31 @@
+.navbar {
+	height: 80px;
+	width: 100%;
+	background-color: burlywood;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+/* .navbar .link {
+	width: 120px;
+	height: 50%;
+	border: 1px rosybrown;
+	filter: drop-shadow(1px 1px 1px);
+	background-color: cornsilk;
+	margin-right: 50px;
+} */
+
+.btn-classic {
+	width: 120px;
+	height: 50%;
+	border: 1px rosybrown;
+	filter: drop-shadow(1px 1px 1px);
+	background-color: cornsilk;
+	margin-right: 50px;
+	text-align: center;
+	align-items: center;
+
+	justify-items: center;
+	align-content: center;
+}

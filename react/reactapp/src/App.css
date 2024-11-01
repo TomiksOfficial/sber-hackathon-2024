@@ -3,3 +3,8 @@
 	height: 100px;
 	background-color: blueviolet;
 }
+
+.link {
+	text-decoration: none;
+	color: black;
+}

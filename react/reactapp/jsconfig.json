@@ -9,7 +9,7 @@
         "moduleResolution": "node",
 
         "allowSyntheticDefaultImports": true, // force import
-		"types": ["vite/client"]
+		"types": ["vite/client"],
     },
-    "include": ["src/**/*", "vite-env.d.ts", "src"]
+    "include": ["src/**/*", "vite-env.d.ts", "src"],
 }

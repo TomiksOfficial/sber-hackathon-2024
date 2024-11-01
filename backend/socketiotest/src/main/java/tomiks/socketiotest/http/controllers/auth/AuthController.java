@@ -32,7 +32,7 @@ public class AuthController {
         } catch (Exception e) {
 
             if (request.getRemoteUser() != null) {
-                System.out.println("Remote user: " + request.getRemoteUser());
+//                System.out.println("Remote user: " + request.getRemoteUser());
                 return ResponseEntity.ok(userService.getUserByEmailOrUsername(request.getRemoteUser()));
             }
 
