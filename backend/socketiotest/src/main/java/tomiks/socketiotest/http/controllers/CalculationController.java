@@ -24,7 +24,7 @@ public class CalculationController {
 			return ResponseEntity.ok(null);
 		}
 
-		return ResponseEntity.ok(Algorithms.getMileage(orderList, K));
+		return ResponseEntity.ok(Algorithms.getMileage(orderList, orderList.size()));
 	}
 
 	@PostMapping("/get_sorted_order_list")

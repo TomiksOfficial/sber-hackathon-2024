@@ -1,7 +1,7 @@
 .navbar {
 	height: 80px;
 	width: 100%;
-	background-color: burlywood;
+	background-color: rgb(219, 172, 207);
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;

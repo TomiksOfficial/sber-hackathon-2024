@@ -21,6 +21,20 @@ export const Navbar = observer(() => {
 		<>
 			<div className="navbar">
 				{
+					authStore.isAuth &&
+					<Link to={"/client"} className="link btn-classic">
+						Клиент
+					</Link>
+				}
+
+				{
+					authStore.isAuth && authStore.client.roles.some(o => o.name == "ROLE_ADMIN") &&
+					<Link to={"/admin"} className="link btn-classic">
+						Админ
+					</Link>
+				}
+
+				{
 					!authStore.isAuth ?
 					<Link to={"/login"} className="link btn-classic">
 						Авторизация

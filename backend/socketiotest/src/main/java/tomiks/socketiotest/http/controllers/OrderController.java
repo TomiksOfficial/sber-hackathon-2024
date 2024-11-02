@@ -32,7 +32,7 @@ public class OrderController {
 			return null;
 		}
 
-		return orderRepository.findAllByClient(user);
+		return orderRepository.findAllByClientOrd(user.getId());
 	}
 
 	@GetMapping("/all_active_orders")
@@ -109,8 +109,8 @@ public class OrderController {
 
 	@GetMapping("/admin/active_orders")
 	@AdminRole
-	public List<Order> getAllActiveOrdersByCount(@RequestParam(value = "count", defaultValue = "50") int count) {
-		return orderRepository.findAllByCanceledIsFalseAndActiveIsTrueOrderByPriorityAsc(Limit.of(count));
+	public List<Order> getAllActiveOrdersByCount() {
+		return orderRepository.findAllByCanceledIsFalseAndActiveIsTrueOrderByPriorityAsc(Limit.of(50));
 	}
 
 	@PostMapping("/admin/manage_orders")
