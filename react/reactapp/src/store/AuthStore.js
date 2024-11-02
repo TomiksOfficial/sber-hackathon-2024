@@ -24,6 +24,12 @@ class AuthStore {
 		let result = (await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/login", {
 			"login": username,
 			"password": password
+		}, {
+			withCredentials: true,
+			credentials: "include"
+			// headers: {
+			// 	'SameSite': 'None'
+			// }
 		}).then((result) => {
 			if (result.status != 200)
 			{
@@ -38,6 +44,35 @@ class AuthStore {
 			return true;
 		}).catch(e => {
 			console.log("err " + e);
+			return false;
+		}));
+	}
+
+	logout = async () => {
+		if (!this.isAuth) {
+			return true;
+		}
+
+		let result = (await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/logout", undefined, {
+			withCredentials: true,
+			credentials: "include"
+			// headers: {
+			// 	'SameSite': 'None'
+			// }
+		}).then((result) => {
+			if (result.status != 200)
+			{
+				return false;
+			}
+	
+			runInAction(() => {
+				this.client = {};
+				this.isAuth = false;
+			});
+
+			return true;
+		}).catch(e => {
+			console.log(e);
 			return false;
 		}));
 	}

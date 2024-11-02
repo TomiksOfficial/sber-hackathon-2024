@@ -16,8 +16,8 @@ public class SessionConfig {
         serializer.setCookieName("JSESSIONID");
         serializer.setCookiePath("/");
         serializer.setUseSecureCookie(true);
-        serializer.setSameSite("Strict");
-        serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
+        serializer.setSameSite("None");
+//        serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
         return serializer;
     }
 

@@ -3,11 +3,19 @@ import "./Navbar.css";
 import { useStore } from "../../store/StoreContext";
 import { AuthForm } from "../authform/AuthForm";
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Navbar = observer(() => {
 
 	const { authStore } = useStore();
+	const navigate = useNavigate();
+
+	function logout() {
+		if (authStore.logout())
+		{
+			navigate("/login");
+		}
+	}
 
     return (
 		<>
@@ -18,7 +26,7 @@ export const Navbar = observer(() => {
 						Авторизация
 					</Link>
 					:
-					<button className="btn-classic">
+					<button onClick={logout} className="btn-classic">
 						Выйти
 					</button>
 				}

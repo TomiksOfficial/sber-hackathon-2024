@@ -21,6 +21,7 @@ function App() {
 								<Routes>
 									{!authStore.isAuth && <Route path="/login" element={<AuthForm/>} />}
 									{!authStore.isAuth && <Route path="/register" element={<RegisterForm />} />}
+									<Route path="/client" element={<ClientForm />}></Route>
 									{/* <Route path="/NotFound" element={<NotFoundModule/>} /> */}
 									<Route path="*" element={<Navigate to="/NotFound" replace />} />
 								</Routes>

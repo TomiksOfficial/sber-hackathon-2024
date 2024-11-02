@@ -29,3 +29,7 @@
 	justify-items: center;
 	align-content: center;
 }
+
+.btn-classic:hover {
+	cursor: pointer;
+}
