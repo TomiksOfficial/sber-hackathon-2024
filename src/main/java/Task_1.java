@@ -4,27 +4,31 @@ import java.util.Scanner;
 
 public class Task_1 {
 
-    static Scanner sc = new Scanner(System.in);
 
     static String firmaStreet;
     static Integer firmaHouse;
-
     static public void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
 
         final int N = sc.nextInt();
         final int M = sc.nextInt();
 
-        final int K = sc.nextInt();
 
         firmaStreet = sc.next();
         firmaHouse = sc.nextInt();
 
-        int mileage = getMileage(K);
+        final int K = sc.nextInt();
+
+        int mileage = getMileage(K, sc);
 
         System.out.println(mileage * 100);
     }
 
-    private static int getMileage(int K) {
+
+    private static int getMileage(int K, Scanner sc) {
+
+
 
         List<Integer> firmaAdd = convertStringToMatrix(firmaStreet, firmaHouse);
         List<Integer> lastAdd = new ArrayList<>(firmaAdd);
